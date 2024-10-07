@@ -24,6 +24,7 @@ import { CheckIcon, SpinnerIcon } from '@/components/ui/icons'
 import { format } from 'date-fns'
 import { streamText } from 'ai'
 import { openai } from '@ai-sdk/openai'
+import { azure } from '@ai-sdk/azure'
 import { z } from 'zod'
 import { ListHotels } from '@/components/hotels/list-hotels'
 import { Destinations } from '@/components/flights/destinations'
@@ -59,7 +60,7 @@ async function submitUserMessage(content: string) {
   ;(async () => {
     try {
       const result = await streamText({
-        model: openai('gpt-3.5-turbo'),
+        model: azure('opt-dev-gpt-4o'),
         temperature: 0,
         tools: {
           showFlights: {
